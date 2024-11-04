@@ -17,7 +17,7 @@ interface FormOrderData {
     notes: string;
 }
 
-export const ModalOrder: FC<FormOrderProps> = ({ cart, myNumber }) => {
+export const FormOrder: FC<FormOrderProps> = ({ cart, myNumber }) => {
 
     const {
         register,

@@ -3,7 +3,7 @@
 import { FC, useState } from "react";
 import { useCartStore } from "../store/cart.store";
 import { ModalComponent } from "@/features/menu/components/modal-component";
-import { ModalOrder } from "@/features/menu/components/form-order";
+import { FormOrder } from "@/features/menu/components/form-order";
 
 interface ButtonCartProps {
     myNumber: string;
@@ -96,7 +96,7 @@ export const ButtonCart: FC<ButtonCartProps> = ({ myNumber }) => {
                 isOpen={isOpen}
                 onClose={() => setIsOpen(false)}
             >
-                <ModalOrder
+                <FormOrder
                     cart={cart}
                     myNumber={myNumber}
                 />
