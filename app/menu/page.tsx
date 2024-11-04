@@ -37,10 +37,10 @@ export default async function MenuPage() {
     )
 }
 
-export const SkeletonCard = () => {
-    return (
-        <div className="p-4">
-            <div className="animate-pulse bg-gray-200 rounded-lg h-96"></div>
-        </div>
-    )
-}
+// export const SkeletonCard = () => {
+//     return (
+//         <div className="p-4">
+//             <div className="animate-pulse bg-gray-200 rounded-lg h-96"></div>
+//         </div>
+//     )
+// }
