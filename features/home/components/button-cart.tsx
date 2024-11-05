@@ -84,12 +84,16 @@ export const ButtonCart: FC<ButtonCartProps> = ({ myNumber }) => {
                             Math.round(cart.reduce((acc, item) => acc + parseFloat(item.price) * item.quantity, 0) * 100) / 100
                         }</p>
                     </div>
-                    <button
-                        onClick={() => setIsOpen(true)}
-                        className="bg-green-500 text-white font-bold py-2 rounded mt-4 w-full"
-                    >
-                        Completar pedido
-                    </button>
+                    {
+                        cart.length > 0 &&
+                        <button
+                            onClick={() => setIsOpen(true)}
+                            className="bg-green-500 text-white font-bold py-2 rounded mt-4 w-full"
+                        >
+                            Completar pedido
+                        </button>
+                    }
+
                 </div>
             </div>
             <ModalComponent
