@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 interface FormOrderProps {
     cart: MenuItemCart[];
     myNumber: string;
+    setShow: (show: boolean) => void;
 }
 
 interface FormOrderData {
@@ -17,7 +18,7 @@ interface FormOrderData {
     notes: string;
 }
 
-export const FormOrder: FC<FormOrderProps> = ({ cart, myNumber }) => {
+export const FormOrder: FC<FormOrderProps> = ({ cart, myNumber, setShow }) => {
 
     const {
         register,
@@ -45,11 +46,15 @@ export const FormOrder: FC<FormOrderProps> = ({ cart, myNumber }) => {
         message += `*Dirección:* ${ data.address }\n`;
         message += `*Referencia:* ${ data.reference }\n\n`;
         message += `*Productos:*\n`;
+        // cart.forEach((item, index) => {
+        //     message += `${ index + 1 }. ${ item.name } - S/.${ item.price } x ${ item.quantity }\n`;
+        // });
         cart.forEach((item, index) => {
-            message += `${ index + 1 }. ${ item.name } - S/.${ item.price } x ${ item.quantity }\n`;
+            const itemTotal = (item.quantity * parseFloat(item.price)).toFixed(2); // Limitar a 2 decimales
+            message += `${ index + 1 }. ${ item.name } x ${ item.quantity } (S/.${ item.price }) = S/.${ itemTotal }\n`;
         });
         message += `\n`;
-        message += `*Total: S/.${ cart.reduce((acc, item) => acc + (parseFloat(item.price) * item.quantity), 0) }*\n\n`;
+        message += `*Total: S/.${ cart.reduce((acc, item) => acc + (parseFloat(item.price) * item.quantity), 0).toFixed(2) }*\n\n`;
         message += `*Forma de Pago:* ${ data.payment }\n`;
 
         if (data.notes.length > 0) message += `*Notas:* ${ data.notes }\n`;
@@ -62,11 +67,13 @@ export const FormOrder: FC<FormOrderProps> = ({ cart, myNumber }) => {
 
         // Clear the cart
         clearCart();
+
+        // Close the modal
+        setShow(false);
     }
 
     return (
-        <div className="flex flex-col px-4 py-4">
-
+        <div className="flex flex-col px-4 py-4 max-h-[85vh] overflow-y-auto ">
             <h2 className="text-lg font-semibold text-gray-800 dark:text-white">Formulario de Pedido</h2>
             <form
                 onSubmit={handleSubmit(onSubmit)}

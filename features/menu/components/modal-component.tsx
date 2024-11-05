@@ -15,7 +15,7 @@ export const ModalComponent = ({
                 onClick={onClose}
             >
             </div>
-            <div className={`overflow-y-auto fixed p-4 w-full max-w-xl max-h-full left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 ${ isOpen ? '' : 'hidden' }`}>
+            <div className={`fixed p-4 w-full max-w-xl max-h-full left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 ${ isOpen ? '' : 'hidden' }`}>
                 <div className="relative rounded-lg shadow bg-gray-200 dark:bg-gray-700">
                     {/* <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                     </div> */}
